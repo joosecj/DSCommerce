@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="tb_ordem_item")
+@Table(name ="tb_order_item")
 public class OrderItem {
     @EmbeddedId
     private OrderItemPK id = new OrderItemPK();
