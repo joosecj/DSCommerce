@@ -26,6 +26,7 @@ public class ProductService {
         Page<Product> productList = productRepository.findAll(pageable);
         return productList.map(x -> new ProductDTO(x));
     }
+
     @Transactional(readOnly = false)
     public ProductDTO insert(ProductDTO dto) {
         Product entity = new Product();
@@ -33,12 +34,18 @@ public class ProductService {
         entity = productRepository.save(entity);
         return new ProductDTO(entity);
     }
+
     @Transactional(readOnly = false)
     public ProductDTO update(Long id, ProductDTO dto) {
         Product entity = productRepository.getReferenceById(id);
         copyDtoToEntity(dto, entity);
         entity = productRepository.save(entity);
         return new ProductDTO(entity);
+    }
+
+    @Transactional(readOnly = false)
+    public void delete(Long id) {
+        productRepository.deleteById(id);
     }
 
     private void copyDtoToEntity(ProductDTO dto, Product entity) {
