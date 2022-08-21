@@ -19,11 +19,8 @@ public class OrderItemPK implements Serializable {
     public OrderItemPK() {
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
+    public OrderItemPK(Product product, Order order) {
+        this.product = product;
         this.order = order;
     }
 
@@ -34,4 +31,13 @@ public class OrderItemPK implements Serializable {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
 }
