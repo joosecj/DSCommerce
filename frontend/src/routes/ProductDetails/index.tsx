@@ -21,7 +21,6 @@ const produc: ProductDTO = {
       name: "Computadores"
     }
   ]
-
 }
 
 export default function ProductDetails() {
@@ -32,8 +31,8 @@ export default function ProductDetails() {
         <section id="product-details-section" className="dsc-container">
           <ProductDetailsCard product={produc} />
           <div className="dsc-btn-page-container">
-            <ButtonPrimary />
-            <ButtonInverse />
+            <ButtonPrimary text="Comprar" />
+            <ButtonInverse text="Início" />
           </div>
         </section>
       </main>
