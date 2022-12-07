@@ -14,11 +14,11 @@ const produc: ProductDTO = {
   categories: [
     {
       id: 1,
-      name: "Eletrônico"
+      name: "Eletrônicos"
     },
     {
       id: 2,
-      name: "Computador"
+      name: "Computadores"
     }
   ]
 
