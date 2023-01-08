@@ -5,8 +5,12 @@ import { OrderDTO } from '../../../models/order';
 import { Link } from 'react-router-dom';
 
 export default function Cart() {
-
   const [cart, setCart] = useState<OrderDTO>(cartService.getCart);
+
+  function handleClear() {
+    cartService.clearCart();
+    setCart(cartService.getCart);
+  }
 
   return (
     <main>
@@ -47,7 +51,6 @@ export default function Cart() {
               </div>
             )
         }
-
         <div className="dsc-btn-page-container">
           <div className="dsc-btn dsc-btn-blue">
             Finalizar pedido
@@ -57,6 +60,9 @@ export default function Cart() {
               Continuar comprando
             </div>
           </Link>
+          <div onClick={handleClear} className="dsc-btn dsc-btn-white">
+            Limpar carrinho
+          </div>
 
         </div>
       </section>

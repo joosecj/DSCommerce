@@ -19,3 +19,7 @@ export function addProduct(product: ProductDTO) {
     cartResposity.save(cart);
   }
 }
+
+export function clearCart() {
+  cartResposity.clear();
+}
