@@ -6,7 +6,7 @@ export function save(cart: OrderDTO) {
   localStorage.setItem(CART_KEY, str);
 }
 
-export function get() : OrderDTO {
-  const str = localStorage.getItem(CART_KEY) || '{"items"=[]}';
+export function get(): OrderDTO {
+  const str = localStorage.getItem(CART_KEY) || '{"items":[]}';
   return JSON.parse(str);
 }
