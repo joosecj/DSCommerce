@@ -9,6 +9,7 @@ import * as productService from '../../../services/product-service';
 
 export default function Catalog() {
   const [products, setProducts] = useState<ProductDTO[]>([]);
+
   useEffect(() => {
     productService.findAll()
       .then(response => {
@@ -28,7 +29,6 @@ export default function Catalog() {
             )
           }
         </div>
-
         <ButtonNexPage />
       </section>
     </main>
