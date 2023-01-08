@@ -1,12 +1,12 @@
-import { json } from 'react-router-dom';
+import { CART_KEY } from '../utils/system';
 import { OrderDTO } from './../models/order';
 
 export function save(cart: OrderDTO) {
   const str = JSON.stringify(cart);
-  localStorage.setItem("com.devsuperior.dscommerce/cart", str);
+  localStorage.setItem(CART_KEY, str);
 }
 
 export function get() : OrderDTO {
-  const str = localStorage.getItem("com.devsuperior.dscommerce/cart") || '{"items"=[]}';
+  const str = localStorage.getItem(CART_KEY) || '{"items"=[]}';
   return JSON.parse(str);
 }
