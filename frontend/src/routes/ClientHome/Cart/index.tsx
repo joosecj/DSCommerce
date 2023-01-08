@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import './styles.css';
+import * as cartService from '../../../services/cart-service';
+import { OrderDTO } from '../../../models/order';
 
 const cart = {
   items: [
@@ -20,6 +23,9 @@ const cart = {
 }
 
 export default function Cart() {
+
+  const [cart, setCart] = useState<OrderDTO>(cartService.getCart);
+
   return (
     <main>
       <section id="cart-container-section" className="dsc-container">
