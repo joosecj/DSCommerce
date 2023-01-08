@@ -24,7 +24,9 @@ Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fá
 
 - Clone o código fonte
 
-   `git@github.com:joosecj/DSCommerce.git`
+   ```bash
+     git@github.com:joosecj/DSCommerce.git
+   ```
 
 - Em sua IDE de preferência(utilizei Intellij), importe a pasta **backend** e faça o update das dependências do **maven**.
 
@@ -39,7 +41,6 @@ Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fá
       
 
 - Link da Collections do postman: https://www.getpostman.com/collections/2d18991dfa57a1f44592
-
 
 
 <h2>Tecnologias utlizadas</h2>
