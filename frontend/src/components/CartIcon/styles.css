@@ -1,0 +1,14 @@
+.dsc-cart-cout {
+  color: var(--dsc-color-font-tertiary);
+  font-size: 10px;
+  background-color: var(--dsc-color-bg-notification);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  position: relative;
+  top: -10px;
+  left: -5px;
+}
