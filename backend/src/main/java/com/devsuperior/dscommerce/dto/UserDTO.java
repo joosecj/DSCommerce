@@ -23,6 +23,17 @@ public class UserDTO {
         this.birthDate = birthDate;
     }
 
+    public UserDTO(User userEntity) {
+        id = userEntity.getId();
+        name = userEntity.getName();
+        email = userEntity.getEmail();
+        phone = userEntity.getPhone();
+        birthDate = userEntity.getBirthDate();
+        for (GrantedAuthority role : userEntity.getAuthorities()) {
+            roles.add((role.getAuthority()));
+        }
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,16 +56,5 @@ public class UserDTO {
 
     public List<String> getRoles() {
         return roles;
-    }
-
-    public UserDTO(User userEntity) {
-        id = userEntity.getId();
-        name = userEntity.getEmail();
-        email = userEntity.getEmail();
-        phone = userEntity.getPhone();
-        birthDate = userEntity.getBirthDate();
-        for (GrantedAuthority role : userEntity.getAuthorities()) {
-            roles.add((role.getAuthority()));
-        }
     }
 }
