@@ -19,8 +19,6 @@ export function loginRequest(loginData: CredentialsDTO) {
     data: requestBody,
     headers
   }
-  console.log(requestBody);
-
   return requestBackend(config);
 }
 
