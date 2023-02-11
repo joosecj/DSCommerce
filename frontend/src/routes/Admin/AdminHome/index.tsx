@@ -12,7 +12,6 @@ export default function AdminHome() {
         setUser(response.data);
         console.log(response.data);
       });
-
   }, [])
 
   return (
