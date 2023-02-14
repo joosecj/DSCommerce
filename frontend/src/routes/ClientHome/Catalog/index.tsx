@@ -52,9 +52,7 @@ export default function Catalog() {
         </div>
         {
           !isLastPage &&
-          <div onClick={handleNextPageClick}>
-            <ButtonNexPage />
-          </div>
+          <ButtonNexPage onNextPage={handleNextPageClick} />
         }
       </section>
     </main>
