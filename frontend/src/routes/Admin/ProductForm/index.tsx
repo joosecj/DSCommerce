@@ -52,14 +52,11 @@ export default function ProductForm() {
   function handleInputChange(event: any) {
     const value = event.target.value;
     const name = event.target.name;
-    const dataUpdated = forms.update(formData, name, value);
-    const dataValidated = forms.validate(dataUpdated, name);
-    setFormData(dataValidated);
+    setFormData(forms.updateAndValidate(formData, name, value));
   }
 
   function handleInputTurnDirty(name: string) {
-    const newFormData = forms.toDirty(formData, name);
-    setFormData(newFormData);
+    setFormData(forms.dirtyAndValidate(formData, name));
   }
 
   return (
@@ -100,12 +97,10 @@ export default function ProductForm() {
                 />
               </div>
             </div>
-
             <div className="dsc-product-form-buttons">
               <Link to="/admin/products">
                 <button type="reset" className="dsc-btn dsc-btn-white">Cancelar</button>
               </Link>
-
               <button type="submit" className="dsc-btn dsc-btn-blue">Salvar</button>
             </div>
           </form>
