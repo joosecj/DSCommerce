@@ -32,7 +32,7 @@ export default function Login() {
 
   function handleSubmit(event: any) {
     event.preventDefault();
-    authService.loginRequest({ username: formData.username.value, password: formData.password.value })
+    authService.loginRequest(forms.toValues(formData))
       .then(response => {
         authService.saveAcessToken(response.data.access_token);
         setContextTokenPayload(authService.getAccessTokenPayload());
