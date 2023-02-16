@@ -16,6 +16,10 @@ export default function ProductForm() {
       name: "name",
       type: "text",
       placeholder: "Nome",
+      validation: function (value: string) {
+        return /^.{3,80}$/.test(value);
+      },
+      message: "Favor informar um nome de 3 a 80 caracteres"
     },
     price: {
       value: "",
@@ -38,8 +42,6 @@ export default function ProductForm() {
   });
 
   useEffect(() => {
-    const result = forms.toDirty(formData, "price");
-    console.log(result);
     if (isEditing) {
       productService.findById(Number(params.productId))
         .then(response => {
