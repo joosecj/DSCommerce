@@ -120,7 +120,6 @@ nav a {
   display: flex;
   align-items: center;
 }
-
 .dsc-menu-item p {
   display: none;
   margin-left: 5px;
@@ -258,16 +257,9 @@ nav a {
   display: none;
 }
 
-.dsc-select:invalid {
-  color: var(--dsc-color-font-placeholder);
-}
-
-.dsc-select option[disabled] {
-  display: none;
-}
-
-.dsc-select option {
-  color: var(--dsc-color-font-primary);
+.dsc-form-select-container {
+  padding: unset;
+  height: unset;
 }
 
 .dsc-textarea {
