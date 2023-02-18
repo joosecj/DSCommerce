@@ -100,7 +100,6 @@ export default function ProductForm() {
     event.preventDefault();
     const formDataValidated = forms.dirtyAndValidateAll(formData);
     if (forms.hasAnyInvalid(formDataValidated)) {
-      console.log(formDataValidated);
       setFormData(formDataValidated);
       return;
     }
@@ -117,7 +116,10 @@ export default function ProductForm() {
     request
       .then(() => {
         navigate("/admin/products")
-      })
+      }).catch(error => {
+        const newInputs = forms.setBackendErros(formData, error.response.data.fieldMessages);
+        setFormData(newInputs);
+      });
   }
 
   return (
