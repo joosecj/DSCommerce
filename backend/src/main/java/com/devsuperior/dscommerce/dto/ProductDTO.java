@@ -8,18 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDTO {
-    private Long id;
-    @Size(min = 3, max = 80, message = "Nome precisar ter de 3 a 80 caracteres")
+    private final Long id;
+    @Size(min = 3, max = 80, message = "Nome precisa ter de 3 a 80 caracteres")
     @NotBlank(message = "Campo requerido")
-    private String name;
-    @Size(min = 10, message = "minimo de 10 caracteres")
+    private final String name;
+    @Size(min = 10, message = "mínimo de 10 caracteres")
     @NotBlank(message = "mensagem obrigatoria")
-    private String description;
-    @Positive(message = "Preço invalido")
-    private Double price;
-    private String imgUrl;
+    private final String description;
+    @NotNull(message = "Campo requerido.")
+    @Positive(message = "Preço inválido.")
+    private final Double price;
+    private final String imgUrl;
     @NotEmpty(message = "Deve ter pelo menos uma categoria")
-    private List<CategoryDTO> categories = new ArrayList<>();
+    private final List<CategoryDTO> categories = new ArrayList<>();
 
     public ProductDTO(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;
