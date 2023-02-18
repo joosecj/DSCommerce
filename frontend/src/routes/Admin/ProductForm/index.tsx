@@ -5,11 +5,16 @@ import * as forms from '../../../utils/forms';
 import { useEffect, useState } from 'react';
 import * as productService from '../../../services/product-service'
 import FormTextArea from '../../../components/FormTextArea';
+import { CategoryDTO } from '../../../models/category';
+import * as categoryService from '../../../services/category-service';
+import FormSelect from '../../../components/FormSelect';
 
 
 export default function ProductForm() {
   const params = useParams();
   const isEditing = params.productId !== 'create';
+  const [categories, setCategories] = useState<CategoryDTO[]>([]);
+
   const [formData, setFormData] = useState<any>({
     name: {
       value: "",
@@ -50,8 +55,24 @@ export default function ProductForm() {
         return /^.{10,}$/.test(value);
       },
       message: "A descrição com minimo de 10 caracteres!"
+    },
+    categories: {
+      value: [],
+      id: "categories",
+      name: "categories",
+      placeholder: "categorias",
+      validation: function (value: CategoryDTO[]) {
+        return value.length > 0;
+      },
+      message: "Escolha ao menos uma categoria!"
     }
   });
+  useEffect(() => {
+    categoryService.findAllPageRequest()
+      .then(response => {
+        setCategories(response.data)
+      })
+  }, []);
 
   useEffect(() => {
     if (isEditing) {
@@ -109,6 +130,24 @@ export default function ProductForm() {
                   onTurnDirty={handleInputTurnDirty}
                   onChange={handleInputChange}
                 />
+              </div>
+              <div>
+                <FormSelect
+                  {...formData.categories}
+                  className="dsc-form-control"
+                  options={categories}
+                  onChange={(obj: any) => {
+                    const newFormData = forms.updateAndValidate(formData, "categories", obj);
+                    setFormData(newFormData);
+                  }}
+                  onTurnDirty={handleInputTurnDirty}
+                  isMulti
+                  getOptionLabel={(obj: any) => obj.name}
+                  getOptionValue={(obj: any) => String(obj.id)}
+                />
+                <div className='dsc-form-error'>
+                  {formData.categories.message}
+                </div>
               </div>
               <div>
                 <FormTextArea
