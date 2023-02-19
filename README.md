@@ -15,8 +15,6 @@ Experimente live demo:
 
 <p align='center'> <img src="https://i.imgur.com/r7Giga8.gif"/></p>
 
-
-
 <h2>Como criar e executar o DSCommerce localmente</h2>
 
 Criar e executar o projeto em seu ambiente de desenvolvimento local é muito fácil. Certifique-se de ter o Git e JDK17 instalados e siga as instruções abaixo. Precisa de informações adicionais? entre em contato no e-mail josecarloscjj@gmail.com 
