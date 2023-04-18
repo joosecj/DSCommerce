@@ -102,7 +102,7 @@ export default function ProductForm() {
     if (forms.hasAnyInvalid(formDataValidated)) {
       setFormData(formDataValidated);
       return;
-    }
+    } 
 
     const requestBody = forms.toValues(formData);
     if (isEditing) {

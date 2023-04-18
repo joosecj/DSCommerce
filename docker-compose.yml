@@ -1,0 +1,61 @@
+version: "3"
+services:
+  # ====================================================================================================================
+  # POSTGRES SERVER
+  # ====================================================================================================================
+  pg-docker:
+    image: postgres:14-alpine
+    container_name: dev-postgresql-ds
+    environment:
+      POSTGRES_DB: "dscommerce"
+      POSTGRES_PASSWORD: "123456789"
+    ports:
+      - 5433:5432
+    volumes:
+      - ${DATA_PATH_HOST}/postgresql/data:/var/lib/postgresql/data
+    networks:
+      - dev-network
+  # ====================================================================================================================
+  # PGADMIN
+  # ====================================================================================================================
+  pgadmin-docker:
+    image: dpage/pgadmin4
+    container_name: dev-pgadmin-ds
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "jose@teste.com"
+      PGADMIN_DEFAULT_PASSWORD: "1234567"
+    ports:
+      - 15432:80
+    volumes:
+      - ${DATA_PATH_HOST}/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - pg-docker
+    networks:
+      - dev-network
+  # ====================================================================================================================
+  # DSCOMMERCE
+  # ====================================================================================================================
+  bestcommerce-api:
+    image: joosecj/dscommerce-api:v1
+    container_name: api-dscommerce
+    environment:
+      DB_IP: "pg-docker"
+      DB_PORT: "5432"
+      DB_NAME: "dscommerce"
+      API_SECRET_KEY: "53ccr3"
+      API_EXPIRE_LENGTH: "3600000"
+      DB_PASSWORD: "123456789"
+    ports:
+      - 8080:80
+    volumes:
+      - ${DATA_PATH_HOST}/dscommerce:/var/lib/dscommerce
+    depends_on:
+      - pg-docker
+    networks:
+      - dev-network
+# ======================================================================================================================
+# REDE
+# ======================================================================================================================
+networks:
+  dev-network:
+    driver: bridge
